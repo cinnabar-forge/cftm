@@ -1,0 +1,44 @@
+{
+  "name": "@cinnabar-forge/markup",
+  "version": "0.0.0",
+  "description": "Cinnabar Forge Markup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cinnabar-forge/markup.git"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Timur Moziev",
+    "email": "timur.moziev@gmail.com",
+    "url": "https://timurrin.github.io"
+  },
+  "type": "module",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "bin": {
+    "cinnabar-markup": "bin/cinnabar-markup.js"
+  },
+  "files": [
+    "bin",
+    "schemas",
+    "src"
+  ],
+  "scripts": {
+    "declare-types": "tsc -d --allowJs --emitDeclarationOnly src/index.js",
+    "format": "npx prettier . --write",
+    "lint": "npx eslint --fix .",
+    "test": "mocha 'tests/**/*.test.js'",
+    "verify": "npm run lint && npm run format && npm test"
+  },
+  "dependencies": {
+    "ajv": "8.12.0"
+  },
+  "devDependencies": {
+    "@cinnabar-forge/eslint-plugin": "0.4.0",
+    "chai": "5.1.0",
+    "mocha": "10.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
