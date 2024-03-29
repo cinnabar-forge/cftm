@@ -30,6 +30,22 @@ export class CinnabarMarkupBuilder {
     return this.add("h2", text);
   }
 
+  h3(text) {
+    return this.add("h3", text);
+  }
+
+  h4(text) {
+    return this.add("h4", text);
+  }
+
+  h5(text) {
+    return this.add("h5", text);
+  }
+
+  h6(text) {
+    return this.add("h6", text);
+  }
+
   highlight(type, text) {
     if (!this.currentParagraph) {
       this.add("p", text);
