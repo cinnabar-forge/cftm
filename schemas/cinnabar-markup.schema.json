@@ -1,36 +1,53 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Cinnabar Markup Schema",
+  "title": "Cinnabar Forge Text Markup",
   "type": "array",
   "items": {
     "type": "object",
     "properties": {
-      "type": { "type": "string" },
-      "value": {
-        "type": "array",
-        "items": { "$ref": "#/definitions/textElement" }
+      "type": {
+        "title": "Type of this line/row",
+        "type": "string",
+        "enum": ["header", "paragraph", "code", "item", "row", "gallery"]
       },
-      "multiValue": {
+      "data": {
+        "title": "List of text data for this line/row",
         "type": "array",
         "items": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/textElement" }
+          "anyOf": [
+            {
+              "title": "Text with options",
+              "type": "object",
+              "properties": {
+                "text": { "type": "string" },
+                "highlight": {
+                  "type": "string",
+                  "enum": ["bold", "italic", "underline", "code"]
+                },
+                "glueLastText": { "type": "boolean" },
+                "link": { "type": "string" },
+                "glueLastLink": { "type": "boolean" },
+                "mergeCellBelow": { "type": "boolean" }
+              },
+              "required": ["text"],
+              "additionalProperties": false
+            },
+            { "title": "Default text", "type": "string" }
+          ]
         }
       },
-      "codeLanguage": { "type": "string" }
-    },
-    "required": ["type"],
-    "additionalProperties": false
-  },
-  "definitions": {
-    "textElement": {
-      "type": "object",
-      "properties": {
-        "text": { "type": "string" },
-        "highlight": { "type": "string", "enum": ["b", "i", "u", "code"] }
+      "level": {
+        "title": "Number to specify header and list deepening",
+        "type": "integer",
+        "minimum": 1,
+        "default": 1
       },
-      "required": ["text"],
-      "additionalProperties": false
-    }
+      "codeLanguage": {
+        "title": "Language name to suggest specific code highlight",
+        "type": "string"
+      }
+    },
+    "required": ["type", "data"],
+    "additionalProperties": false
   }
 }

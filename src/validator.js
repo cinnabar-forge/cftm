@@ -4,7 +4,7 @@ import path from "path";
 
 /**
  *
- * @param {object} data
+ * @param {import("../types/schema").CinnabarForgeTextMarkup[]} data
  * @returns {Promise<boolean>}
  */
 export async function validateCinnabarMarkup(data) {

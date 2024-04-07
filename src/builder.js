@@ -1,72 +1,105 @@
+/**
+ * Builder class for creating Cinnabar Forge Text Markup.
+ */
 export class CinnabarMarkupBuilder {
+  /**
+   * Creates an instance of CinnabarMarkupBuilder.
+   */
   constructor() {
+    /** @type {import("../types/schema").CinnabarForgeTextMarkup} */
     this.markup = [];
-    this.currentParagraph = null;
+    /** @type {import("../types/schema").CinnabarForgeTextMarkup[number]|null} */
+    this.currentElement = null;
   }
 
-  add(type, value = null) {
-    const element = { type: type, value: [] };
-    if (value) {
-      element.value.push({ text: value });
-    }
+  /**
+   * Adds an element to the markup.
+   * @param {import("../types/schema").CinnabarForgeTextMarkup[number]} params Parameters for the new element.
+   * @returns {CinnabarMarkupBuilder} The instance of this builder.
+   * @private
+   */
+  _addElement(params) {
+    const element = params;
     this.markup.push(element);
-    if (type === "p") {
-      this.currentParagraph = element;
-    } else {
-      this.currentParagraph = null;
+    this.currentElement = element;
+    return this;
+  }
+
+  /**
+   * Appends multiple data items to the current element's data array.
+   * @param {import("../types/schema").ListOfTextDataForThisLineRow} data The data to append.
+   * @returns {CinnabarMarkupBuilder} The instance of this builder.
+   * @private
+   */
+  _appendData(data) {
+    if (!this.currentElement) {
+      this._addElement({ data: [], type: "paragraph" });
+    }
+    if (this.currentElement != null) {
+      this.currentElement.data.push(...data);
     }
     return this;
   }
 
+  /**
+   * Appends a single data item to the current element's data array.
+   * @param {import("../types/schema").ListOfTextDataForThisLineRow[number]} datum The data item to append.
+   * @returns {CinnabarMarkupBuilder} The instance of this builder.
+   * @private
+   */
+  _appendDatum(datum) {
+    if (!this.currentElement) {
+      this._addElement({ data: [], type: "paragraph" });
+    }
+    if (this.currentElement != null) {
+      this.currentElement.data.push(datum);
+    }
+    return this;
+  }
+
+  /**
+   * Adds a code block to the markup.
+   * @param {import("../types/schema").LanguageNameToSuggestSpecificCodeHighlight} language The programming language of the code.
+   * @param {import("../types/schema").ListOfTextDataForThisLineRow} lines The lines of code.
+   * @returns {CinnabarMarkupBuilder} The instance of this builder.
+   */
+  addCode(language, lines) {
+    this._addElement({
+      codeLanguage: language,
+      data: [],
+      type: "code",
+    })._appendData(lines);
+    return this;
+  }
+
+  /**
+   * Adds a header to the markup.
+   * @param {import("../types/schema").NumberToSpecifyHeaderAndListDeepening} level The level (depth) of the header.
+   * @param {string} text The header text.
+   * @returns {CinnabarMarkupBuilder} The instance of this builder.
+   */
+  addHeader(level, text) {
+    this._addElement({ data: [], level, type: "header" })._appendDatum({
+      text,
+    });
+    return this;
+  }
+
+  /**
+   * Adds a paragraph to the markup.
+   * @param {string} text The paragraph text.
+   * @returns {CinnabarMarkupBuilder} The instance of this builder.
+   */
+  addParagraph(text) {
+    this._addElement({ data: [], type: "paragraph" })._appendDatum({ text });
+    return this;
+  }
+
+  /**
+   * Builds the markup and returns it.
+   * @returns {import("../types/schema").CinnabarForgeTextMarkup} The markup.
+   */
   build() {
     return this.markup;
-  }
-
-  h1(text) {
-    return this.add("h1", text);
-  }
-
-  h2(text) {
-    return this.add("h2", text);
-  }
-
-  h3(text) {
-    return this.add("h3", text);
-  }
-
-  h4(text) {
-    return this.add("h4", text);
-  }
-
-  h5(text) {
-    return this.add("h5", text);
-  }
-
-  h6(text) {
-    return this.add("h6", text);
-  }
-
-  highlight(type, text) {
-    if (!this.currentParagraph) {
-      this.add("p", text);
-    }
-    this.currentParagraph.value.push({ highlight: type, text: text });
-    return this;
-  }
-
-  p(text) {
-    return this.add("p", text);
-  }
-
-  tag(type, text = null) {
-    return this.add(type, text);
-  }
-
-  text(text) {
-    if (!this.currentParagraph) {
-      this.add("p", text);
-    }
-    this.currentParagraph.value.push({ text: text });
-    return this;
   }
 }

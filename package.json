@@ -1,7 +1,7 @@
 {
   "name": "@cinnabar-forge/markup",
   "version": "0.0.0",
-  "description": "Cinnabar Forge Markup",
+  "description": "Cinnabar Forge Markup Format",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cinnabar-forge/markup.git"
@@ -14,14 +14,15 @@
   },
   "type": "module",
   "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "types": "types/index.d.ts",
   "bin": {
     "cinnabar-markup": "bin/cinnabar-markup.js"
   },
   "files": [
     "bin",
     "schemas",
-    "src"
+    "src",
+    "types"
   ],
   "scripts": {
     "declare-types": "tsc -d --allowJs --emitDeclarationOnly src/index.js",
@@ -39,6 +40,6 @@
     "mocha": "10.4.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   }
 }

@@ -1,0 +1,113 @@
+[
+  {
+    "type": "header",
+    "data": [
+      "Cinnabar Forge Text Markup"
+    ],
+    "level": 1
+  },
+  {
+    "type": "paragraph",
+    "data": [
+      "This is a very",
+      {
+        "highlight": "italic",
+        "text": "light"
+      },
+      {
+        "text": ", but",
+        "glueLastText": true
+      },
+      {
+        "highlight": "bold",
+        "text": "robust"
+      },
+      "text specification.",
+      "It has linear structure which lacks of any nestings.",
+      "Parts of the paragraph are joined with a space by default, but you can glue text to the part, like",
+      {
+        "text": "this",
+        "highlight": "bold"
+      },
+      {
+        "text": ".",
+        "glueLastText": true
+      },
+      "We also have",
+      {
+        "text": "links!",
+        "link": "https://example.com"
+      }
+    ]
+  },
+  {
+    "type": "header",
+    "data": [
+      "Headers"
+    ],
+    "level": 2
+  },
+  {
+    "type": "paragraph",
+    "data": [
+      "We can specify"
+    ]
+  },
+  {
+    "type": "header",
+    "data": [
+      "Headers"
+    ],
+    "level": 3
+  },
+  {
+    "type": "paragraph",
+    "data": [
+      "As much headers"
+    ]
+  },
+  {
+    "type": "header",
+    "data": [
+      "Headers"
+    ],
+    "level": 4
+  },
+  {
+    "type": "paragraph",
+    "data": [
+      "As we need"
+    ]
+  },
+  {
+    "type": "header",
+    "data": [
+      "Code"
+    ],
+    "level": 1
+  },
+  {
+    "type": "code",
+    "codeLanguage": "javascript",
+    "data": [
+      "// Each data item with 'code' type is treated as a single line",
+      "function foo(bar) {",
+      "  return true;",
+      "}"
+    ]
+  },
+  {
+    "type": "header",
+    "data": [
+      "Table"
+    ],
+    "level": 1
+  },
+  {
+    "type": "header",
+    "data": [
+      "Gallery"
+    ],
+    "level": 1
+  }
+]
