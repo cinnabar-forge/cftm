@@ -31,11 +31,11 @@
     "verify": "npm run lint && npm run format && npm test"
   },
   "dependencies": {
-    "ajv": "8.12.0"
+    "ajv": "8.16.0"
   },
   "devDependencies": {
     "@cinnabar-forge/eslint-plugin": "0.4.0",
-    "chai": "5.1.0",
+    "chai": "5.1.1",
     "mocha": "10.4.0"
   },
   "engines": {
