@@ -5,7 +5,7 @@ import { CinnabarMarkupBuilder } from "../src/builder.js";
 import { validateCinnabarMarkup } from "../src/validator.js";
 
 describe("Cinnabar Markup Builder", () => {
-  it("should build a correct Cinnabar Markup", async () => {
+  it("should build a correct Cinnabar Markup", () => {
     const validMarkup = new CinnabarMarkupBuilder()
       .h1("SuperApp")
       .p("This is a new paragraph, but we can")
@@ -18,6 +18,6 @@ describe("Cinnabar Markup Builder", () => {
       .tag("p", "This is a yet another way to add a paragraph.")
       .build();
 
-    expect(await validateCinnabarMarkup(validMarkup)).to.be.true;
+    expect(validateCinnabarMarkup(validMarkup)).to.be.true;
   });
 });
