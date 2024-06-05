@@ -1,7 +1,7 @@
 {
   "name": "@cinnabar-forge/markup",
   "version": "0.0.0",
-  "description": "Cinnabar Forge Markup",
+  "description": "A JSON-based text markup",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cinnabar-forge/markup.git"
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@cinnabar-forge/eslint-plugin": "0.4.0",
+    "@cinnabar-forge/meta": "0.1.2",
     "chai": "5.1.1",
     "mocha": "10.4.0",
     "pre-commit": "1.2.2"
