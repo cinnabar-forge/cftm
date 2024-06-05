@@ -27,8 +27,7 @@
     "declare-types": "tsc -d --allowJs --emitDeclarationOnly src/index.js",
     "format": "npx prettier . --write",
     "lint": "npx eslint --fix .",
-    "test": "mocha 'tests/**/*.test.js'",
-    "verify": "npm run lint && npm run format && npm test"
+    "test": "mocha 'tests/**/*.test.js'"
   },
   "dependencies": {
     "ajv": "8.16.0"
@@ -36,9 +35,15 @@
   "devDependencies": {
     "@cinnabar-forge/eslint-plugin": "0.4.0",
     "chai": "5.1.1",
-    "mocha": "10.4.0"
+    "mocha": "10.4.0",
+    "pre-commit": "1.2.2"
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "format",
+    "test"
+  ]
 }
