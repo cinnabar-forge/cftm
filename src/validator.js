@@ -1,22 +1,15 @@
 import Ajv from "ajv";
-import fs from "fs";
-import path from "path";
+
+import { CINNABAR_MARKUP_SCHEMA } from "./schema.js";
 
 /**
- *
- * @param {import("../types/schema").CinnabarForgeTextMarkup[]} data
- * @returns {Promise<boolean>}
+ * Checks the markup data against the schema
+ * @param {object} data markup data
+ * @returns {boolean} true if the data compiles to the schema, false otherwise
  */
-export async function validateCinnabarMarkup(data) {
-  const schema = JSON.parse(
-    await fs.promises.readFile(
-      path.resolve("./schemas/cinnabar-markup.schema.json"),
-      "utf-8",
-    ),
-  );
-
+export function validateCinnabarMarkup(data) {
   const ajv = new Ajv();
-  const validate = ajv.compile(schema);
+  const validate = ajv.compile(CINNABAR_MARKUP_SCHEMA);
 
   if (!validate(data)) {
     console.error(

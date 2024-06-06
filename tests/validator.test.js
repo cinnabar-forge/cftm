@@ -4,7 +4,7 @@ import { describe, it } from "mocha";
 import { validateCinnabarMarkup } from "../src/validator.js";
 
 describe("Cinnabar Markup Validator", () => {
-  it("should validate a correct Cinnabar Markup structure", async () => {
+  it("should validate a correct Cinnabar Markup structure", () => {
     const validMarkup = [
       {
         data: ["Cinnabar Forge Text Markup"],
@@ -88,16 +88,16 @@ describe("Cinnabar Markup Validator", () => {
         type: "code",
       },
     ];
-    expect(await validateCinnabarMarkup(validMarkup)).to.be.true;
+    expect(validateCinnabarMarkup(validMarkup)).to.be.true;
   });
 
-  it("should invalidate an incorrect Cinnabar Markup structure", async () => {
+  it("should invalidate an incorrect Cinnabar Markup structure", () => {
     const invalidMarkup = [
       {
         type: "h1",
         value: [{ highlight: "i" }],
       },
     ];
-    expect(await validateCinnabarMarkup(invalidMarkup)).to.be.false;
+    expect(validateCinnabarMarkup(invalidMarkup)).to.be.false;
   });
 });
