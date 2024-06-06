@@ -1,5 +1,5 @@
 {
-  "name": "@cinnabar-forge/markup",
+  "name": "cftm",
   "version": "0.0.0",
   "description": "A JSON-based text markup",
   "repository": {
@@ -16,17 +16,17 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "bin": {
-    "cinnabar-markup": "bin/cinnabar-markup.js"
+    "cftm": "bin/cftm.js"
   },
   "files": [
     "bin",
-    "schemas",
     "src"
   ],
   "scripts": {
     "declare-types": "tsc -d --allowJs --emitDeclarationOnly src/index.js",
     "format": "npx prettier . --write",
-    "lint": "npx eslint --fix .",
+    "lint": "npx eslint --max-warnings 0 .",
+    "lint:fix": "npx eslint --fix .",
     "test": "mocha 'tests/**/*.test.js'"
   },
   "dependencies": {

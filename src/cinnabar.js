@@ -10,7 +10,7 @@ export default {
         "src",
         "cinnabar.js"
       ],
-      "package": "@cinnabar-forge/markup"
+      "package": "cftm"
     }
   },
   "version": {
