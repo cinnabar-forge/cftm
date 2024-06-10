@@ -1,13 +1,13 @@
 import Ajv from "ajv";
 
-import { CINNABAR_MARKUP_SCHEMA } from "./schema.js";
+import { CINNABAR_MARKUP_SCHEMA, CftmSchema } from "./schema.js";
 
 /**
  * Checks the markup data against the schema
- * @param {object} data markup data
+ * @param {CftmSchema} data markup data
  * @returns {boolean} true if the data compiles to the schema, false otherwise
  */
-export function validateCinnabarMarkup(data) {
+export function validateCinnabarMarkup(data: CftmSchema): boolean {
   const ajv = new Ajv();
   const validate = ajv.compile(CINNABAR_MARKUP_SCHEMA);
 

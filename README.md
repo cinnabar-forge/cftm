@@ -1,6 +1,6 @@
 # CFTM - Cinnabar Forge Text Markup
 
-**DISCLAIMER**: Until version 1.0.0, all versions below should be considered unstable and are subject to change.
+**DISCLAIMER**: Until version 1.0.0, all versions below should be considered unstable.
 
 A JSON-based text markup.
 

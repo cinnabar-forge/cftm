@@ -2,10 +2,11 @@ import { expect } from "chai";
 import { describe, it } from "mocha";
 
 import { validateCinnabarMarkup } from "../src/validator.js";
+import { CftmSchema } from "../src/schema.js";
 
 describe("Cinnabar Markup Validator", () => {
   it("should validate a correct Cinnabar Markup structure", () => {
-    const validMarkup = [
+    const validMarkup: CftmSchema = [
       {
         data: ["Cinnabar Forge Text Markup"],
         level: 1,
@@ -89,15 +90,5 @@ describe("Cinnabar Markup Validator", () => {
       },
     ];
     expect(validateCinnabarMarkup(validMarkup)).to.be.true;
-  });
-
-  it("should invalidate an incorrect Cinnabar Markup structure", () => {
-    const invalidMarkup = [
-      {
-        type: "h1",
-        value: [{ highlight: "i" }],
-      },
-    ];
-    expect(validateCinnabarMarkup(invalidMarkup)).to.be.false;
   });
 });

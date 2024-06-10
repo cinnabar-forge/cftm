@@ -1,3 +1,30 @@
+export type CftmElement = {
+  type: CftmElementType;
+  data: CftmData;
+  level?: number;
+  codeLanguage?: string;
+};
+export type CftmElementType =
+  | "header"
+  | "paragraph"
+  | "code"
+  | "item"
+  | "row"
+  | "gallery";
+export type CftmHighlightType = "bold" | "italic" | "underline" | "code";
+export type CftmData = (
+  | {
+      text: string;
+      highlight?: CftmHighlightType;
+      glueLastText?: boolean;
+      link?: string;
+      glueLastLink?: boolean;
+      mergeCellBelow?: boolean;
+    }
+  | string
+)[];
+export type CftmSchema = CftmElement[];
+
 export const CINNABAR_MARKUP_SCHEMA = {
   $schema: "http://json-schema.org/draft-07/schema#",
   items: {
